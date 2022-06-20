@@ -6,6 +6,6 @@ resource "google_artifact_registry_repository" "artifact-repo" {
   description   = var.description
   format        = var.format
   kms_key_name  = var.kms_key_name
-  labels        = var.labels
+  labels        = length(keys(var.labels)) < 0 ? null : var.labels
 }
 
