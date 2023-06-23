@@ -1,11 +1,14 @@
 resource "google_artifact_registry_repository" "artifact-repo" {
+  count         = var.no_of_repos
+  repository_id = var.name_of_repos[count.index] 
   provider      = google-beta
   project       = var.project_id
   location      = var.location
-  repository_id = var.repository_id
-  description   = var.description
-  format        = var.format
   kms_key_name  = var.kms_key_name
-  labels        = length(keys(var.labels)) < 0 ? null : var.labels
+  format        = var.format
+  mode          = var.mode
+   docker_config {
+    immutable_tags = var.format == "DOCKER" ? true : false
+  } 
 }
 
