@@ -1,6 +1,5 @@
 resource "google_artifact_registry_repository" "artifact-repo" {
-  count         = var.no_of_repos
-  repository_id = var.name_of_repos[count.index] 
+  repository_id = var.name_of_repo 
   provider      = google-beta
   project       = var.project_id
   location      = var.location
