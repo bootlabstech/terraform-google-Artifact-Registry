@@ -10,7 +10,7 @@ variable "no_of_repos" {
   type        = number
   description = "Number of the repositories  in the artifact registry"
 }
-variable "name_of_repo" {
+variable "name_of_repos" {
   type        = list(string)
   description = "Name of the repository id in the artifact registry"
 }
