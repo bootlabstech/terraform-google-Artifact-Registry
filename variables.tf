@@ -6,10 +6,17 @@ variable "location" {
   type        = string
   description = "Name of the location this repository is located in."
 }
-
+variable "no_of_repos" {
+  type        = number
+  description = "Number of the repositories  in the artifact registry"
+}
 variable "name_of_repo" {
-  type        = string
+  type        = list(string)
   description = "Name of the repository id in the artifact registry"
+}
+variable "description" {
+  type        = list(string)
+  description = "The user-provided description of the repository."
 }
 variable "kms_key_name" {
   type        = string
