@@ -17,6 +17,7 @@ variable "name_of_repos" {
 variable "description" {
   type        = list(string)
   description = "The user-provided description of the repository."
+  default     = ["Default description"]
 }
 variable "kms_key_name" {
   type        = string

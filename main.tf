@@ -4,7 +4,7 @@ resource "google_artifact_registry_repository" "artifact-repo" {
   provider      = google-beta
   project       = var.project_id
   location      = var.location
-  description   = var.description[count.index]
+  description   = var.description[count.index] != null ? var.description[count.index] : var.default_description 
   kms_key_name  = var.kms_key_name
   format        = var.format
   mode          = var.mode
