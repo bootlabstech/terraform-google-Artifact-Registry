@@ -15,4 +15,15 @@ resource "google_artifact_registry_repository" "artifact-repo" {
     ignore_changes = [labels]
   }
 }
+data "google_project" "service_project3" {
+  project_id = var.project_id
+}
+resource "google_project_iam_binding" "network_binding4" {
+  count   = 1
+  project = var.project_id
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  members = [
+    "serviceAccount:service-${data.google_project.service_project3.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+  ]
+}
 
