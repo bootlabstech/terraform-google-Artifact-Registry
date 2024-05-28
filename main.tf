@@ -4,7 +4,7 @@ resource "google_artifact_registry_repository" "artifact-repo" {
   provider      = google-beta
   project       = var.project_id
   location      = var.location
-  description   = var.description[count.index] != null ? var.description[count.index] : var.default_description 
+  description   = var.description[count.index] != null ? var.description[count.index] : var.description 
   kms_key_name  = var.kms_key_name
   format        = var.format
   mode          = var.mode
@@ -14,6 +14,7 @@ resource "google_artifact_registry_repository" "artifact-repo" {
   lifecycle {
     ignore_changes = [labels]
   }
+   depends_on = [ google_project_iam_binding.network_binding4 ]
 }
 data "google_project" "service_project3" {
   project_id = var.project_id
