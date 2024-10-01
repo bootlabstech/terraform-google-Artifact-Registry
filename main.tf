@@ -9,7 +9,7 @@ resource "google_artifact_registry_repository" "artifact-repo" {
   format        = var.format
   mode          = var.mode
   docker_config {
-    immutable_tags = var.format == "DOCKER" ? true : false
+    immutable_tags = var.format 
   }
   lifecycle {
     ignore_changes = [labels]
