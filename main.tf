@@ -21,6 +21,9 @@ data "google_project" "service_project3" {
 }
 resource "google_project_iam_binding" "network_binding4" {
   count   = 1
+  lifecycle {
+    ignore_changes = [ members ]
+  }
   project = var.project_id
   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   members = [
